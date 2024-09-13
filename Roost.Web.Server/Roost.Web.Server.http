@@ -1,0 +1,6 @@
+@Roost.Web.Server_HostAddress = http://localhost:5069
+
+GET {{Roost.Web.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

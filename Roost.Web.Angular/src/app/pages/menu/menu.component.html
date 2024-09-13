@@ -1,0 +1,18 @@
+<div class="spinner-container" *ngIf="loading">
+  <mat-spinner class="mat-spinner-color"></mat-spinner>
+</div>
+
+<div *ngIf="menuSections && menuSections.length">
+
+  <div class="menu-category" *ngFor="let section of menuSections">
+    <div class="menu-category-title">{{ section.category }}</div>
+
+    <mat-card class="menu-item" *ngFor="let item of section.items">
+      <mat-card-content>
+        <img *ngIf="item.images && item.images.length" [src]="item.images[0].absoluteUri" />
+        <div class="menu-item-name">{{ item.itemName }}</div>
+        <button mat-flat-button (click)="addToBag(item)">Add to Bag</button>
+      </mat-card-content>
+    </mat-card>
+    </div>
+</div>

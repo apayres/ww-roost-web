@@ -1,0 +1,39 @@
+.menu-category {
+  .menu-category-title {
+    padding: 15px;
+    padding-left: 0;
+    font-weight: 500;
+    font-size: 17px;
+    border-bottom: solid 1px #e3e3e3;
+    margin-bottom: 15px;
+  }
+}
+
+.menu-item {
+  width: 100%;
+  padding: 10px;
+  max-width: 200px;
+  float: left;
+  text-align: center;
+
+  img {
+    width: 80%;
+  }
+
+  .menu-item-name {
+    margin: 15px;
+    font-weight: 400;
+  }
+}
+
+.spinner-container{
+    margin-top: 100px;
+}
+
+.mat-spinner-color{
+    margin: auto;
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: #42332C !important;
+}

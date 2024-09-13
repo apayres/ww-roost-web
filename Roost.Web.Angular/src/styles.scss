@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+@use './app/theme';
+
+@include mat.core();
+
+html {
+  // Apply the light theme by default
+  @include mat.core-theme(theme.$light-theme);
+  @include mat.button-theme(theme.$light-theme);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background: #F9F9F9;
+  overflow: auto;
+  font-size: 14px;
+}

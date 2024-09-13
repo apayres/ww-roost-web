@@ -1,0 +1,40 @@
+<div id="header">
+  <div class="header-logo"></div>
+
+  <div class="header-menu">
+    <div *ngIf="!optimizeForSmallScreen">
+      <a mat-button routerLink="/menu">Menu</a>
+      <a mat-button routerLink="/retail">Retail</a>
+      <a mat-button routerLink="/about">About</a>
+      <a mat-flat-button routerLink="/bag" class="bag-button">
+        <mat-icon fontIcon="shopping_bag"></mat-icon>
+        Bag ({{ itemsInBag }})
+      </a>
+    </div>
+
+    <a mat-button href="#" class="menu-button" *ngIf="optimizeForSmallScreen" (click)="toggleSideMenu()">
+      <mat-icon *ngIf="!showSideMenu" fontIcon="menu"></mat-icon>
+      <mat-icon *ngIf="showSideMenu" fontIcon="close"></mat-icon>
+    </a>
+  </div>
+</div>
+
+<div id="side-menu" *ngIf="showSideMenu">
+  <a mat-button routerLink="/menu">
+    <mat-icon fontIcon="local_cafe"></mat-icon>
+    Menu
+  </a>
+  <br />
+  <a mat-button routerLink="/retail">
+    <mat-icon fontIcon="storefront"></mat-icon>
+    Retail
+  </a>
+  <br />
+  <a mat-button routerLink="/bag" class="bag-button">
+    <mat-icon fontIcon="shopping_bag"></mat-icon>
+    Bag ({{ itemsInBag }})
+  </a>
+
+  <mat-divider></mat-divider>
+  <a mat-button routerLink="/about" class="about-button">About</a>
+</div>

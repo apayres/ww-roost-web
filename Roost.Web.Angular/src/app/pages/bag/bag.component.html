@@ -1,0 +1,47 @@
+<div id="bag-total-summary">
+  <div class="bag-total-summary-contents">
+    <div class="total-group-title">
+      <span>Order Summary</span>
+    </div>
+
+    <div class="total-group">
+      <div class="total-name">Sub Total</div>
+      <div class="total-value">
+        ${{order.subTotal}}
+      </div>
+    </div>
+
+    <div class="total-group">
+      <div class="total-name">Sales Tax</div>
+      <div class="total-value">
+        ${{order.salesTax}}
+      </div>
+    </div>
+
+    <div class="total-group">
+      <div class="total-name">Total</div>
+      <div class="total-value">
+        ${{order.total}}
+      </div>
+    </div>
+    <div class="total-group-button">
+      <button mat-flat-button (click)="submitOrder(order)">Place Order</button>
+    </div>
+  </div>
+</div>
+
+<div id="bag-items">
+  <div *ngIf="order.orderItems && order.orderItems.length">
+    <mat-card class="menu-item" *ngFor="let orderItem of order.orderItems">
+      <mat-card-content>
+        <button mat-button class="remove-button" (click)="removeItem(orderItem.orderItemId)">
+          <mat-icon fontIcon="delete"></mat-icon>
+          <span>Remove</span>
+        </button>
+        <img [src]="orderItem.item.images[0].absoluteUri" />
+        <div class="menu-item-name">{{ orderItem.item.itemName }}</div>
+        <div class="menu-item-price">${{ orderItem.price }}</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

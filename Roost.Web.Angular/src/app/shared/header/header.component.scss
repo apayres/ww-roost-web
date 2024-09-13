@@ -1,0 +1,60 @@
+.header-logo {
+  background-image: url('/menu-image.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 130px;
+  height: 130px;
+}
+
+#header {
+  padding: 10px;
+  border-bottom: solid 1px #eee;
+  height: 60px;
+  position: relative;
+  box-shadow: 0 0 3px #ccc;
+  padding-left: 200px;
+  z-index: 9999;
+  background: #fff;
+
+  .header-menu {
+    margin-top: 10px;
+
+    .bag-button {
+      position: absolute;
+      right: 50px;
+    }
+    .mat-icon{
+        margin-right: 0;
+    }
+
+
+    .menu-button {
+      position: absolute;
+      right: 10px;
+    }
+  }
+
+  .header-logo {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    box-shadow: 0 0 3px #444;
+  }
+}
+
+#side-menu {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  background: #eee;
+  box-shadow: 0 0 3px #ccc;
+  border-left: solid 1px #ccc;
+  z-index: 8888;
+
+  a {
+    margin: 5px;
+  }
+}
