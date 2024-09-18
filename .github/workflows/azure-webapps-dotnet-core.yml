@@ -1,0 +1,52 @@
+name: Roost Web Deployment
+
+env:
+  AZURE_WEBAPP_NAME: ww-roost-web    
+  BACKEND_PUBLISH_PATH: './publish'
+  FRONTEND_PUBLISH_PATH: './publish/wwwroot' 
+  DOTNET_VERSION: '8'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build backend
+        run: dotnet build --configuration Release ./Roost.Web.Server.csproj
+
+      - name: dotnet publish
+        run: dotnet publish ./Roost.Web.Server.csproj -c Release -o ${{env.BACKEND_PUBLISH_PATH}}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies for frontend
+        run: npm install --prefix
+        working-directory: ./Roost.Web.Angular
+
+      - name: Build
+        run: npm run build --if-present --prefix
+        working-directory: ./Roost.Web.Angular
+
+      - name: Copy frontend build to backend publish folder
+        run: cp -r ./Roost.Web.Angular/dist/Roost.Web.Angular/* ${{ env.FRONTEND_PUBLISH_PATH }}
+
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }} 
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: "${{ env.BACKEND_PUBLISH_PATH }}"
