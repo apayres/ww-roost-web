@@ -18,6 +18,11 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "wwwroot";
+});
+
 // APP OPTIONS
 builder.Services.Configure<RepoOptions>(x =>
 {
@@ -46,6 +51,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseSpaStaticFiles();
 }
 
 app.UseHttpsRedirection();

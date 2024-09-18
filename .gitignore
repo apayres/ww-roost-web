@@ -401,7 +401,7 @@ FodyWeavers.xsd
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
-/dist
+Roost.Web.Angular/dist
 /tmp
 /out-tsc
 /bazel-out
@@ -429,7 +429,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+Roost.Web.Angular/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage

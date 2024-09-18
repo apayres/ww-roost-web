@@ -22,10 +22,10 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Build backend
-        run: dotnet build --configuration Release ./Roost.Web.Server.csproj
+        run: dotnet build --configuration Release ./Roost.Web.Server/Roost.Web.Server.csproj
 
       - name: dotnet publish
-        run: dotnet publish ./Roost.Web.Server.csproj -c Release -o ${{env.BACKEND_PUBLISH_PATH}}
+        run: dotnet publish ./Roost.Web.Server/Roost.Web.Server.csproj -c Release -o ${{env.BACKEND_PUBLISH_PATH}}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2

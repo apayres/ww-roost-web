@@ -17,16 +17,23 @@ namespace Roost.Web.Server.Messaging
 
         public void SendOrder(Order order)
         {
+            // Service Client
             var client = new ServiceBusClient(_connection);
 
+            // Compose our message
             var message = new ServiceBusMessage();
             message.ApplicationProperties.Add("Author", "Adam");
-            message.To = "Ordering System";
+            message.ApplicationProperties.Add("Reason", "COP");
+
+            message.To = "Order System";
             message.Subject = "New Order";
             message.ContentType = "application/json";
             message.Body = new BinaryData(JsonSerializer.Serialize(order));
 
+            // Create the message sender 
             var sender = client.CreateSender("orders");
+
+            // Send message
             sender.SendMessageAsync(message).Wait();
         }
     }
