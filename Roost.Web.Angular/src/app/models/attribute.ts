@@ -1,4 +1,5 @@
-export interface Attribute {
+export interface Attribute
+{
   name: string;
   description: string;
   value: any;

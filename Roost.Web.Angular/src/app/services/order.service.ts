@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Item } from '../models/Item';
 import { Order } from '../models/order';
+import { Option } from '../models/option';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -23,10 +24,11 @@ export class OrderService {
 
   }
 
-  addToOrder(item: Item, qty: number): void {
+  addToOrder(item: Item, qty: number, options: Option[]): void {
     try {
-      
-      const data = this.http.post<Order>('order', { item, quantity: qty }).subscribe(order => {
+      const orderItem = { item, quantity: qty, options: options };
+      console.log(orderItem);
+      const data = this.http.post<Order>('order', orderItem).subscribe(order => {
         this._order.next(order);
       });
 

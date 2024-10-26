@@ -17,7 +17,6 @@ import { Order } from '../../models/order';
 })
 
 export class HeaderComponent {
-  @Input() optimizeForSmallScreen = false;
 
   showSideMenu: boolean = false;
   itemsInBag: number = 0;

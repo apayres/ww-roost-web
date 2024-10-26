@@ -1,25 +1,29 @@
 <div id="header">
-  <div class="header-logo"></div>
+  <div class="header-logo left-4 md:left-10"></div>
 
   <div class="header-menu">
-    <div *ngIf="!optimizeForSmallScreen">
+    <div class="hidden md:block lg:block w-100 relative">
       <a mat-button routerLink="/menu">Menu</a>
       <a mat-button routerLink="/retail">Retail</a>
       <a mat-button routerLink="/about">About</a>
-      <a mat-flat-button routerLink="/bag" class="bag-button">
-        <mat-icon fontIcon="shopping_bag"></mat-icon>
-        Bag ({{ itemsInBag }})
-      </a>
+      <div class="absolute right-5 top-0">
+        <a mat-flat-button routerLink="/bag" class="bag-button">
+          <mat-icon fontIcon="shopping_bag"></mat-icon>
+          <span class="ms-2">Bag ({{ itemsInBag }})</span>
+        </a>
+      </div>
     </div>
 
-    <a mat-button href="#" class="menu-button" *ngIf="optimizeForSmallScreen" (click)="toggleSideMenu()">
-      <mat-icon *ngIf="!showSideMenu" fontIcon="menu"></mat-icon>
-      <mat-icon *ngIf="showSideMenu" fontIcon="close"></mat-icon>
-    </a>
+    <div class="md:hidden">
+      <a mat-button href="#" class="menu-button" (click)="toggleSideMenu()">
+        <mat-icon *ngIf="!showSideMenu" fontIcon="menu"></mat-icon>
+        <mat-icon *ngIf="showSideMenu" fontIcon="close"></mat-icon>
+      </a>
+    </div>
   </div>
 </div>
 
-<div id="side-menu" *ngIf="showSideMenu">
+<div id="side-menu" *ngIf="showSideMenu" class="md:hidden">
   <a mat-button routerLink="/menu">
     <mat-icon fontIcon="local_cafe"></mat-icon>
     Menu

@@ -10,14 +10,19 @@
 }
 
 .menu-item {
-  width: 100%;
   padding: 10px;
-  max-width: 200px;
   float: left;
   text-align: center;
 
-  img {
-    width: 80%;
+  .menu-item-image {
+    height: 150px;
+    width: 150px;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    margin: auto;
+    border-radius: 300px;
+    border: solid 1px;
   }
 
   .menu-item-name {

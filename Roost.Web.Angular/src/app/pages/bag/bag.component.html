@@ -1,47 +1,86 @@
-<div id="bag-total-summary">
-  <div class="bag-total-summary-contents">
-    <div class="total-group-title">
-      <span>Order Summary</span>
-    </div>
+<div class="flex flex-row">
+  <div class="hidden md:block md:basis-1/4">
+    <mat-card>
+      <mat-card-header class="mb-5">
+        <mat-card-title>Order Summary</mat-card-title>
+      </mat-card-header>
 
-    <div class="total-group">
-      <div class="total-name">Sub Total</div>
-      <div class="total-value">
-        ${{order.subTotal}}
-      </div>
-    </div>
+      <mat-card-content>
+        <div class="mb-3">
+          <div>Sub Total</div>
+          <div class="text-sm text-slate-500">
+            ${{order.subTotal}}
+          </div>
+        </div>
 
-    <div class="total-group">
-      <div class="total-name">Sales Tax</div>
-      <div class="total-value">
-        ${{order.salesTax}}
-      </div>
-    </div>
+        <div class="mb-3">
+          <div >Sales Tax</div>
+          <div class="text-sm text-slate-500">
+            ${{order.salesTax}}
+          </div>
+        </div>
 
-    <div class="total-group">
-      <div class="total-name">Total</div>
-      <div class="total-value">
-        ${{order.total}}
-      </div>
-    </div>
-    <div class="total-group-button">
-      <button mat-flat-button (click)="submitOrder(order)">Place Order</button>
+        <div class="mb-3">
+          <div>Total</div>
+          <div class="text-lg text-slate-500">
+            ${{order.total}}
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div id="bag-items" class="basis-full md:basis-3/4 md:ps-5">
+    <div *ngIf="order.orderItems && order.orderItems.length">
+      <mat-card class="menu-item" *ngFor="let orderItem of order.orderItems">
+        <mat-card-content>
+          <button mat-button class="remove-button" (click)="removeItem(orderItem.orderItemId)">
+            <mat-icon fontIcon="delete"></mat-icon>
+            <span class="hidden md:inline">Remove</span>
+          </button>
+          <div class="menu-item-image" style="background: url('{{orderItem.item.images[0].absoluteUri}}');"></div>
+          <div class="menu-item-name">{{ orderItem.item.itemName }}</div>
+          <div class="menu-item-options">
+            <span *ngFor="let opt of orderItem.options" class="menu-item-option text-xs me-2 text-slate-500">{{ opt.name }}: {{ opt.value }}</span>
+          </div>
+          <div class="menu-item-price">${{ orderItem.price }}</div>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>
 
-<div id="bag-items">
-  <div *ngIf="order.orderItems && order.orderItems.length">
-    <mat-card class="menu-item" *ngFor="let orderItem of order.orderItems">
-      <mat-card-content>
-        <button mat-button class="remove-button" (click)="removeItem(orderItem.orderItemId)">
-          <mat-icon fontIcon="delete"></mat-icon>
-          <span>Remove</span>
-        </button>
-        <img [src]="orderItem.item.images[0].absoluteUri" />
-        <div class="menu-item-name">{{ orderItem.item.itemName }}</div>
-        <div class="menu-item-price">${{ orderItem.price }}</div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<div class="block md:hidden">
+  <mat-card>
+    <mat-card-header class="mb-5">
+      <mat-card-title>Order Summary</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="mb-3">
+        <div>Sub Total</div>
+        <div class="text-sm text-slate-500">
+          ${{order.subTotal}}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div>Sales Tax</div>
+        <div class="text-sm text-slate-500">
+          ${{order.salesTax}}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div>Total</div>
+        <div class="text-lg text-slate-500">
+          ${{order.total}}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<br />
+<div class="fixed bottom-8 right-8" *ngIf="order.orderItems && order.orderItems.length">
+  <button mat-flat-button (click)="submitOrder(order)">Place Order</button>
 </div>

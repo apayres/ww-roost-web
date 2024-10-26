@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/Item';
 import { NgFor, NgIf } from '@angular/common';
@@ -8,7 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/order';
+import { Option } from '../../models/option';
+import { MatDialog } from '@angular/material/dialog';
 import { MenuSection } from '../../models/menuSection';
+import { OptionsComponent } from '../menu/components/options.component';
 
 @Component({
   selector: 'page-menu',
@@ -19,6 +22,7 @@ import { MenuSection } from '../../models/menuSection';
 })
 
 export class MenuComponent implements OnInit {
+  readonly dialog = inject(MatDialog);
 
   menuSections: MenuSection[] = [];
   loading: boolean = true;
@@ -50,7 +54,21 @@ export class MenuComponent implements OnInit {
 
   addToBag(item: Item): boolean {
 
-    this.orderService.addToOrder(item, 1);
+    let optionsDialog = this.dialog.open(OptionsComponent, {
+      data: {
+        attributes: item.attributes
+      }
+    });
+
+    optionsDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.orderService.addToOrder(item, 1, [
+          { name: 'Pigeon Milk', value: result.pigeonMilk.toString() },
+          { name: 'Sugars', value: result.sugars.toString() }
+        ]);
+      }
+    });
+
     return false;
   }
 }

@@ -28,7 +28,7 @@ namespace Roost.Web.Server.Controllers
         [HttpPost]
         public ActionResult<Order> Post(OrderItem orderItem)
         {
-           return _orderService.AddItemToOrder(orderItem.Item, orderItem.Quantity);
+           return _orderService.AddItemToOrder(orderItem.Item, orderItem.Quantity, orderItem.Options);
         }
 
         [HttpPost]

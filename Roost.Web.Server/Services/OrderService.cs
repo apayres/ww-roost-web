@@ -31,7 +31,7 @@ namespace Roost.Web.Server.Services
             return orderInSession;
         }
 
-        public Order AddItemToOrder(Item item, int quantity)
+        public Order AddItemToOrder(Item item, int quantity, List<Option> options)
         {
             var orderInSession = GetOrder();
             if (orderInSession == null)
@@ -45,6 +45,7 @@ namespace Roost.Web.Server.Services
                 OrderItemId = Guid.NewGuid(),
                 Item = item,
                 Quantity = quantity,
+                Options = options,
                 Price = GetItemPrice(item)
             });
 

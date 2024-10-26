@@ -10,7 +10,7 @@
 #header {
   padding: 10px;
   border-bottom: solid 1px #eee;
-  height: 60px;
+  height: 80px;
   position: relative;
   box-shadow: 0 0 3px #ccc;
   padding-left: 200px;
@@ -20,14 +20,9 @@
   .header-menu {
     margin-top: 10px;
 
-    .bag-button {
-      position: absolute;
-      right: 50px;
-    }
     .mat-icon{
         margin-right: 0;
     }
-
 
     .menu-button {
       position: absolute;
@@ -38,7 +33,6 @@
   .header-logo {
     position: absolute;
     top: 0;
-    left: 50px;
     box-shadow: 0 0 3px #444;
   }
 }
@@ -48,7 +42,7 @@
   top: 80px;
   right: 0;
   bottom: 0;
-  width: 40%;
+  width: 60%;
   background: #eee;
   box-shadow: 0 0 3px #ccc;
   border-left: solid 1px #ccc;
