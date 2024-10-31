@@ -5,6 +5,7 @@ import { Item } from '../../models/Item';
 import { NgFor, NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/order';
 import { Option } from '../../models/option';
@@ -23,6 +24,7 @@ import { SpinnerComponent } from '../../shared/components/spinner/spinner.compon
 })
 export class RetailComponent {
   readonly dialog = inject(MatDialog);
+  readonly snackBar = inject(MatSnackBar);
 
   menuSections: MenuSection[] = [];
   loading: boolean = true;
@@ -55,6 +57,10 @@ export class RetailComponent {
   addToBag(item: Item): boolean {
     this.orderService.addToOrder(item, 1, []);
 
+    this.snackBar.open('Item added to order', 'Ok', {
+      duration: 3000
+    });
+
     return false;
   }
 
@@ -70,6 +76,10 @@ export class RetailComponent {
         this.orderService.addToOrder(item, 1, [
           { name: 'Size', value: result.size.toString() }
         ]);
+
+        this.snackBar.open('Item added to order', 'Ok', {
+          duration: 3000
+        });
       }
     });
 

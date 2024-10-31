@@ -2,6 +2,8 @@
 {
     public class Order
     {
+        public string Name { get; set; } = string.Empty;
+
         public List<OrderItem>? orderItems { set; get; }
 
         public decimal? SubTotal { get; set; }

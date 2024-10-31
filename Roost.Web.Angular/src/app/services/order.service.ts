@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class OrderService {
 
   private _order = new BehaviorSubject<Order>({
+    name: '',
     orderItems: [],
     total: 0,
     subTotal: 0,
@@ -49,6 +50,7 @@ export class OrderService {
 
       const data = this.http.post('order/submit', order).subscribe(response => {
         this._order.next({
+          name: '',
           orderItems: [],
           total: 0,
           subTotal: 0,

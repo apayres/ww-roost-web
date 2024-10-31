@@ -6,7 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationComponent } from './components/confirmation.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { PickupDetailsComponent } from './components/pickupDetails/pickupDetails.component';
 
 @Component({
   selector: 'page-bag',
@@ -19,6 +20,7 @@ export class BagComponent {
   readonly dialog = inject(MatDialog);
 
   order: Order = {
+      name: '',
       orderItems: [],
       total: 0,
       subTotal: 0,
@@ -34,8 +36,20 @@ export class BagComponent {
   }
 
   submitOrder(order: Order): void {
-    this.orderService.submitOrder(order, () => {
-      this.dialog.open(ConfirmationComponent)
+    let pickupDetails = this.dialog.open(PickupDetailsComponent);
+
+    pickupDetails.afterClosed().subscribe(result => {
+      if (result) {
+        order.name = result.name;
+
+        this.orderService.submitOrder(order, () => {
+          this.dialog.open(ConfirmationComponent, {
+            data: {
+              name: order.name
+            }
+          });
+        });
+      }
     });
   }
 

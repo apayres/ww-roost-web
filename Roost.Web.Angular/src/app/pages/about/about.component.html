@@ -1,9 +1,32 @@
 <mat-card>
   <mat-card-header class="mb-5">
-    <mat-card-title>The Roost</mat-card-title>
+    <mat-card-title>About this Application</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
-    <p>This application is but a small experiment using the Angular JS framework with a .NET 8 backend. This application is hosted in Azure and utilizes CosmosDB and Azure Blob Storage. I selected <i>The Roost</i> because of my love for the Animal Crossing franchise.</p>
+    <p class="mb-3">This fun little project is a web application used to place orders to a fictitious brick &amp; morter cafe named <strong>The Roost</strong> (based on the Animal Crossing franchise - which I love dearly). This project was simply a challenge to build an Angular application with a .NET 8 backend. Additionally, various Azure services are utilized for data storage, message queueing, and hosting. See below for the tech-stack breakdown.</p>
+
+    <mat-list>
+      <mat-list-item class="mb-4">
+        <span matListItemTitle><strong>Client</strong></span>
+        <span matListItemLine>Angular 18</span>
+        <span matListItemLine>Angular Material 18</span>
+        <span matListItemLine>Tailwind CSS</span>
+      </mat-list-item>
+      <mat-list-item class="mb-4">
+        <span matListItemTitle><strong>Server</strong></span>
+        <span matListItemLine>ASP.NET 8</span>
+        <span matListItemLine>Azure Cosmos DB SDK</span>
+        <span matListItemLine>Azure Service Bus SDK</span>
+      </mat-list-item>
+      <mat-list-item class="mb-4">
+        <span matListItemTitle><strong>Cloud Services</strong></span>
+        <span matListItemLine>Azure Cosmos DB</span>
+        <span matListItemLine>Azure Service Bus</span>
+        <span matListItemLine>Azure App Services (Hosting)</span>
+      </mat-list-item>
+
+    </mat-list>
+
   </mat-card-content>
 </mat-card>

@@ -4,6 +4,7 @@ import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/Item';
 import { NgFor, NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/order';
@@ -23,6 +24,7 @@ import { SpinnerComponent } from '../../shared/components/spinner/spinner.compon
 
 export class MenuComponent implements OnInit {
   readonly dialog = inject(MatDialog);
+  readonly snackBar = inject(MatSnackBar);
 
   menuSections: MenuSection[] = [];
   loading: boolean = true;
@@ -66,6 +68,10 @@ export class MenuComponent implements OnInit {
           { name: 'Pigeon Milk', value: result.pigeonMilk.toString() },
           { name: 'Sugars', value: result.sugars.toString() }
         ]);
+
+        this.snackBar.open('Item added to order', 'Ok', {
+          duration: 3000
+        });
       }
     });
 

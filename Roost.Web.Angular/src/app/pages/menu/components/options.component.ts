@@ -30,20 +30,29 @@ import {
 export class OptionsComponent {
   data = inject(MAT_DIALOG_DATA);
 
-  pigeonMilk: string = '0';
-  sugars: string = '0';
+  pigeonMilk: number = 0;
+  sugars: number = 0;
   calories: number = 0;
   price: number = 0;
+  baseCalories: number = 0;
 
   constructor(public dialogRef: MatDialogRef<OptionsComponent>) {
     this.data.attributes.forEach((attr: any) => {
       if (attr.name === 'Calories') {
-        this.calories = Number(attr.value);
+        this.baseCalories = Number(attr.value);
       }
       else if (attr.name === 'Price') {
         this.price = Number(attr.value);
       }
     });
+
+    this.calculateCalories();
+  }
+
+  calculateCalories() {
+    const caloriesFromPigeonMilk = this.pigeonMilk * 10;
+    const caloriesFromSugars = this.sugars * 5;
+    this.calories = this.baseCalories + caloriesFromPigeonMilk + caloriesFromSugars;
   }
 
   saveSelection() {
