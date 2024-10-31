@@ -33,6 +33,9 @@ jobs:
       - name: List contents of published directory
         run: ls ${{ env.BACKEND_PUBLISH_PATH }}
 
+      - name: List contents of frontend directory
+        run: ls ./Roost.Web.Angular/dist/Roost.Web.Angular/
+
       - name: Create wwwroot directory
         run: mkdir -p ${{ env.FRONTEND_PUBLISH_PATH }}
 
