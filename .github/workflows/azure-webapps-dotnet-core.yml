@@ -42,7 +42,10 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./Roost.Web.Angular
-              
+
+      - name: Create wwwroot directory
+        run: mkdir -p ${{ env.FRONTEND_PUBLISH_PATH }}
+
       - name: Copy frontend build to backend publish folder
         run: cp -r ./Roost.Web.Angular/dist/Roost.Web.Angular/* ${{ env.FRONTEND_PUBLISH_PATH }}
 
