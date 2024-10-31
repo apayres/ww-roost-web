@@ -30,18 +30,8 @@ jobs:
       - name: dotnet publish
         run: dotnet publish ./Roost.Web.Server/Roost.Web.Server.csproj -c Release --no-build -o ${{env.BACKEND_PUBLISH_PATH}}
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.x'
-
-      - name: Install dependencies for frontend
-        run: npm install
-        working-directory: ./Roost.Web.Angular
-
-      - name: Build
-        run: npm run build
-        working-directory: ./Roost.Web.Angular
+      - name: List contents of published directory
+        run: ls ${{ env.BACKEND_PUBLISH_PATH }}
 
       - name: Create wwwroot directory
         run: mkdir -p ${{ env.FRONTEND_PUBLISH_PATH }}
