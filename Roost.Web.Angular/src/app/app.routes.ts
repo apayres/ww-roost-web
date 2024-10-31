@@ -10,5 +10,6 @@ export const routes: Routes = [
   { path: 'bag', component: BagComponent, title: "Bag" },
   { path: 'menu', component: MenuComponent, title: "Menu" },
   { path: 'retail', component: RetailComponent, title: "Retail" },
+  { path: '', component: MenuComponent, title: "Menu" },
   { path: '**', component: NotFoundComponent, title: "Not Found"}
 ];
