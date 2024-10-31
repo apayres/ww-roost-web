@@ -5,18 +5,18 @@ import { Item } from '../../models/Item';
 import { NgFor, NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/order';
 import { Option } from '../../models/option';
 import { MatDialog } from '@angular/material/dialog';
 import { MenuSection } from '../../models/menuSection';
 import { OptionsComponent } from '../menu/components/options.component';
+import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
 
 @Component({
   selector: 'page-menu',
   standalone: true,
-  imports: [MatProgressSpinnerModule, MatCardModule, MatButtonModule, NgFor, NgIf],
+  imports: [SpinnerComponent, MatCardModule, MatButtonModule, NgFor, NgIf],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.itemService.getItems((items: Item[]) => {
+    this.itemService.getMenuItems((items: Item[]) => {
       const categories: string[] = [];
 
       items.forEach((obj) => {

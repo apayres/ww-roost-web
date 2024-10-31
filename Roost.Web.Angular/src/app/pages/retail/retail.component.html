@@ -1,1 +1,17 @@
-<p>retail</p>
+<shared-spinner [showSpinner]="loading"></shared-spinner>
+
+<div *ngIf="menuSections && menuSections.length">
+  <div class="menu-category" *ngFor="let section of menuSections">
+    <div class="menu-category-title">{{ section.category }}</div>
+
+    <div class="menu-item w-1/2 md:w-1/3 lg:w-1/4" *ngFor="let item of section.items">
+      <div class="menu-item-image" style="background: url('{{item.images[0].absoluteUri}}');"></div>
+      <div class="menu-item-name">{{ item.itemName }}</div>
+
+      <button *ngIf="requireOptions(item)" mat-flat-button (click)="showOptionsDialog(item)">Customize</button>
+      <button *ngIf="!requireOptions(item)" mat-flat-button (click)="addToBag(item)">Add to Order</button>
+
+    </div>
+    <div class="clear-both"></div>
+  </div>
+</div>

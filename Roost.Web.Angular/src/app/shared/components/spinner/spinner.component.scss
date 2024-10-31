@@ -1,0 +1,11 @@
+.spinner-container {
+  margin-top: 100px;
+}
+
+.mat-spinner-color {
+  margin: auto;
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: #42332C !important;
+}

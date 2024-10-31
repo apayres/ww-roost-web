@@ -1,0 +1,32 @@
+.menu-category {
+  .menu-category-title {
+    padding: 15px;
+    padding-left: 0;
+    font-weight: 500;
+    font-size: 17px;
+    border-bottom: solid 1px #e3e3e3;
+    margin-bottom: 15px;
+  }
+}
+
+.menu-item {
+  padding: 10px;
+  float: left;
+  text-align: center;
+
+  .menu-item-image {
+    height: 150px;
+    width: 150px;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    margin: auto;
+    border-radius: 300px;
+    border: solid 1px;
+  }
+
+  .menu-item-name {
+    margin: 15px;
+    font-weight: 400;
+  }
+}

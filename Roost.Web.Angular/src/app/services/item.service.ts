@@ -12,9 +12,19 @@ export class ItemService {
 
   }
 
-  getItems(completionCallback : Function, failureCallback: Function): void {    
+  getMenuItems(completionCallback : Function, failureCallback: Function): void {    
     const data = this.http.get<Item[]>('items').subscribe(data => {
-      completionCallback(data);
+      completionCallback(data.filter((x) => {
+        return x.parentCategory !== 'Retail';
+      }));
+    });
+  }
+
+  getRetailItems(completionCallback: Function, failureCallback: Function): void {
+    const data = this.http.get<Item[]>('items').subscribe(data => {
+      completionCallback(data.filter((x) => {
+        return x.parentCategory === 'Retail';
+      }));
     });
   }
 }

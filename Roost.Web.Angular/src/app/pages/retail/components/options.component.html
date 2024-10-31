@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Options</h2>
+
+<mat-dialog-content>
+  <mat-form-field class="w-full">
+    <mat-label>Size</mat-label>
+    <mat-select [(ngModel)]="size">
+      <mat-option value="Small">Small</mat-option>
+      <mat-option value="Medium">Medium</mat-option>
+      <mat-option value="Large">Large</mat-option>
+      <mat-option value="XL">XL</mat-option>
+      <mat-option value="2XL">2XL</mat-option>
+      <mat-option value="3XL">3XL</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+    
+  <div class="grid grid-cols-2">
+    <div>Total</div>
+    <div class="text-right font-bold">
+      ${{ price }}
+    </div>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="saveSelection()">Done</button>
+</mat-dialog-actions>
