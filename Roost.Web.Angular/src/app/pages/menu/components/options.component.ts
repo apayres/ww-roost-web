@@ -16,6 +16,7 @@ import {
 @Component({
   selector: 'page-menu-components-options',
   templateUrl: 'options.component.html',
+  styleUrl: 'options.component.scss',
   standalone: true,
   imports: [
     MatFormFieldModule,

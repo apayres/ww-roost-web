@@ -17,6 +17,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'bag-components-pickupDetails',
   templateUrl: 'pickupDetails.component.html',
+  styleUrl: 'pickupDetails.component.scss',
   standalone: true,
   imports: [
     MatFormFieldModule,

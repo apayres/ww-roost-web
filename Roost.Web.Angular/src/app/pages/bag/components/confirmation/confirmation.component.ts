@@ -13,6 +13,7 @@ import {
 @Component({
   selector: 'page-bag-components-confirmation',
   templateUrl: 'confirmation.component.html',
+  styleUrl: 'confirmation.component.scss',
   standalone: true,
   imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule]
 })
