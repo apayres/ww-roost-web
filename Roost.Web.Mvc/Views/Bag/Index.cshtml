@@ -1,0 +1,34 @@
+﻿@model Roost.Web.Mvc.Models.OrderModel
+
+@{
+    ViewData["Title"] = "Bag";
+}
+
+<div class="row mt-5">
+    <div class="col-3 d-none d-md-block">
+        <vc:order-totals order="Model"></vc:order-totals>
+    </div>
+
+    <div class="col-12 col-md-9">
+        @if (Model.OrderItems != null && Model.OrderItems.Any())
+        {
+            foreach (var orderItem in Model.OrderItems)
+            {
+                <vc:order-item item="orderItem"></vc:order-item>
+            }
+
+        }
+        else
+        {
+            <div class="alert alert-primary" role="alert">
+                <span>There are no items in your bag.</span>
+            </div>
+        }
+    </div>
+
+    <div class="col-12 d-md-none">
+        <vc:order-totals order="Model"></vc:order-totals>
+    </div>
+</div>
+
+<vc:place-order></vc:place-order>

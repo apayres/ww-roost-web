@@ -1,0 +1,18 @@
+﻿@model Roost.Web.Mvc.Models.MenuModel
+
+@{
+    ViewData["Title"] = "Retail";
+}
+
+@foreach (var category in Model.Sections)
+{
+    <div class="menu-category row">
+        <div class="menu-category-title">@category.Category</div>
+        <div class="row">
+            @foreach (var item in category.Items)
+            {
+                <vc:retail-item item="@item"></vc:retail-item>
+            }
+        </div>
+    </div>
+}

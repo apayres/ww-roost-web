@@ -1,0 +1,18 @@
+// BOOTSTRAP IMPLIMENTATION
+///////////////////////////
+
+// VARIABLE VALUES ////////
+///////////////////////////
+$primary: #42332C;
+$secondary: #F4F2F2;
+
+// BOOTSTRAP FOUNDATION ///
+///////////////////////////
+@import "../lib/bootstrap/scss/bootstrap.scss";
+
+// BOOTSTRAP OVERRIDES ////
+///////////////////////////
+.modal-header {
+    background-color: $primary;
+    color: white;
+}

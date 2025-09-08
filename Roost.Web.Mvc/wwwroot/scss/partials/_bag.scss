@@ -1,0 +1,39 @@
+.orderItemImage {
+    height: 100px;
+    width: 100px;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    margin: auto;
+    border-radius: 300px;
+    border: solid 1px;
+    float: left;
+    margin-right: 15px;
+}
+
+.menuItemOption {
+    display: inline-block;
+    font-size: 12px;
+}
+
+.orderSummarySmallText {
+    color: #768089;
+}
+
+.orderSummaryLargeText, .orderItemTotal {
+    font-size: 20px;
+    color: #768089;
+}
+
+.removeOrderItem{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+}
+
+#pickupDetailsButton {
+    position: absolute;
+    bottom: 50px; 
+    right: 50px;
+}

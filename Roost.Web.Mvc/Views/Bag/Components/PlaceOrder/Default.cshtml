@@ -1,0 +1,21 @@
+﻿<button class="btn btn-primary" id="pickupDetailsButton" data-bs-toggle="modal" data-bs-target="#pickupDetailsModal">Place Order</button>
+
+<div class="modal modal-sm fade" id="pickupDetailsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <form id="placeOrderForm" action="/Bag/SubmitOrder" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pickup Details</h5>
+                </div>
+                <div class="modal-body">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cancelButton" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

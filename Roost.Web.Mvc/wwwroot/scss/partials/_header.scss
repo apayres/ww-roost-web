@@ -1,0 +1,46 @@
+#header {
+    padding: 10px;
+    border-bottom: solid 1px #eee;
+    height: 80px;
+    position: relative;
+    box-shadow: 0 0 3px #ccc;
+    padding-left: 200px;
+    background: #fff;
+
+    .header-logo {
+        background-image: url('/images/menu-image.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 130px;
+        height: 130px;
+        position: absolute;
+        top: 0;
+        left: 50px;
+        box-shadow: 0 0 3px #444;
+    }
+
+    .nav-link {
+        border-radius: 5px;
+    }
+
+    .nav-link:hover {
+        background: #F4F2F2;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    #bagSummary {
+        .nav-link {
+            background: #42332C;
+            padding: 5px 12px;
+            position: absolute;
+            right: 35px;
+            top: 12px;
+        }
+    }
+}

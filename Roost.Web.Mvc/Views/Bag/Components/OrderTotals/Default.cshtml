@@ -1,0 +1,16 @@
+﻿@model Roost.Web.Mvc.Models.OrderModel
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Order Summary</h5>
+
+        <h6 class="card-text">Sub Total</h6>
+        <div class="orderSummarySmallText">@(Model.SubTotal?.ToString("C") ?? "")</div>
+
+        <h6 class="card-text mt-2">Sales Tax</h6>
+        <div class="orderSummarySmallText">@(Model.SalesTax?.ToString("C") ?? "")</div>
+
+        <h6 class="card-text mt-2">Total</h6>
+        <div class="orderSummaryLargeText">@(Model.Total?.ToString("C") ?? "")</div>
+    </div>
+</div>

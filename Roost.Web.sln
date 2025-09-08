@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roost.Web.Server", "Roost.W
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Roost.Web.Angular", "Roost.Web.Angular\Roost.Web.Angular.esproj", "{1CFDA061-1B42-463D-94CC-5B30389ED0F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roost.Web.Mvc", "Roost.Web.Mvc\Roost.Web.Mvc.csproj", "{0852EE3A-B5E6-4FA6-8360-51B8997C89CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{1CFDA061-1B42-463D-94CC-5B30389ED0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CFDA061-1B42-463D-94CC-5B30389ED0F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CFDA061-1B42-463D-94CC-5B30389ED0F2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0852EE3A-B5E6-4FA6-8360-51B8997C89CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0852EE3A-B5E6-4FA6-8360-51B8997C89CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0852EE3A-B5E6-4FA6-8360-51B8997C89CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0852EE3A-B5E6-4FA6-8360-51B8997C89CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,8 @@
+﻿@model Roost.Web.Mvc.Models.BagSummaryModel
+
+<div id="bagSummary">
+    <a class="nav-link text-light" asp-area="" asp-controller="Bag" asp-action="Index">
+        <i class="bi bi-bag-fill me-2"></i>
+        Bag (<span id="bagQuantity">@Model.Items.Count()</span>)
+        </a>
+</div>

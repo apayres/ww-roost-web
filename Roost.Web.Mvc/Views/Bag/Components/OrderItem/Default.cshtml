@@ -1,0 +1,27 @@
+﻿@model Roost.Web.Mvc.Models.OrderItemModel
+
+<div class="card orderItem mb-2">
+    <div class="card-body">
+        <div class="orderItemImage" style="background: url('@Model.Item.Images[0].AbsoluteUri');"></div>
+        <h5 class="card-title">@Model?.Item?.ItemName</h5>
+        <div class="card-text">
+            @if (Model.Options != null)
+            {
+                foreach (var opt in Model.Options)
+                {
+                    <div class="orderSummarySmallText menuItemOption">@(opt.Name + ": " + opt.Value)</div>
+                }
+            }
+        </div>
+        <div class="card-text">
+            <div class="orderItemTotal">@Model.Price?.ToString("C")</div>
+        </div>
+
+        <form method="post" action="/Bag/RemoveFromOrder/@Model.OrderItemId">
+            <button type="submit" class="btn removeOrderItem">
+                <i class="bi bi-trash-fill"></i>
+                <span>Remove</span>
+            </button>
+        </form>
+    </div>
+</div>
