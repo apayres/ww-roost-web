@@ -9,7 +9,6 @@ namespace Roost.Web.Mvc.Controllers
         private readonly ILogger<BagController> _logger;
         private readonly IOrderService _orderService;
 
-
         public BagController(ILogger<BagController> logger, IOrderService orderService)
         {
             _logger = logger;

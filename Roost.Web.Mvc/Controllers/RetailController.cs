@@ -10,7 +10,6 @@ namespace Roost.Web.Mvc.Controllers
         private readonly IMenuService _menuService;
         private readonly IOrderService _orderService;
 
-
         public RetailController(ILogger<RetailController> logger, IMenuService menuService, IOrderService orderService)
         {
             _logger = logger;

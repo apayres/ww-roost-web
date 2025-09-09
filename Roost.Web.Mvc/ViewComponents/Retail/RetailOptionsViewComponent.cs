@@ -8,7 +8,7 @@ namespace Roost.Web.Mvc.ViewComponents.Retail
     {
         public IViewComponentResult Invoke(ItemModel item)
         {
-            var model = new AddItemToOrderModel()
+            var model = new RetailItemOptionsModel()
             {
                 Upc = item.Upc,
                 Options = new List<OptionModel>(),
@@ -56,6 +56,15 @@ namespace Roost.Web.Mvc.ViewComponents.Retail
             };
 
             model.ShowOptions = item.Category.Trim() == "Apparel";
+
+            foreach (var attribute in item.Attributes)
+            {
+                if (attribute.Name == "Price")
+                {
+                    model.Price = decimal.Parse(attribute.Value.ToString());
+                    continue;
+                }
+            }
 
             return View(model);
         }

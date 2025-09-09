@@ -32,10 +32,15 @@
     .option {
         padding-bottom: 5px;
 
-        .optionName{
+        .optionName {
             text-align: left;
             display: block;
             padding-bottom: 2px;
         }
+    }
+
+    .optionMetaData {
+        color: #768089;
+        font-size: 14px;
     }
 }

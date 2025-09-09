@@ -1,4 +1,4 @@
-﻿@model Roost.Web.Mvc.Models.AddItemToOrderModel
+﻿@model Roost.Web.Mvc.Models.MenuItemOptionsModel
 
 @{
     var modalId = "modalFor" + Model.Upc;
@@ -23,8 +23,22 @@
                         </div>
                     }
 
+                    <table class="w-100 mt-2 optionMetaData">
+                        <tr>
+                            <td class="text-start">Calories</td>
+                            <td class="caloriesTotal text-end">@Model.BaseCalories</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start">Total</td>
+                            <td class="text-end">@Model.Price.ToString("C")</td>
+                        </tr>
+                    </table>
+
                     @Html.HiddenFor(m => m.Upc, new {@class = "upc"})
                     @Html.HiddenFor(m => m.Quantity, new {@class = "quantity"})
+                    @Html.HiddenFor(m => m.PigeonMilkCalories, new { @class = "pigeonMilkCalories" })
+                    @Html.HiddenFor(m => m.SugarCalories, new { @class = "sugarCalories" })
+                    @Html.HiddenFor(m => m.BaseCalories, new { @class = "baseCalories" })
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary cancelButton" data-bs-dismiss="modal">Cancel</button>

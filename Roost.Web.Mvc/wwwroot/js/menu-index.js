@@ -1,5 +1,6 @@
 ﻿$(window).on('load', function () {
     $('.addToOrder').on('click', addToOrder_Click);
+    $('.optionValue').on('change', optionValue_Change);
 });
 
 function addToOrder_Click(e) {
@@ -67,4 +68,19 @@ function getOrderItem(form) {
         Options: options,
         Quantity: quantity
     });
+}
+
+function optionValue_Change(e) {
+    const form = $(this).parents('form');
+
+    const pigeonMilkQty = Number(form.find('.optionValue:first').val());
+    const pigeonMilkCalories = Number(form.find('.pigeonMilkCalories').val()) * pigeonMilkQty;
+
+    const sugarQty = Number(form.find('.optionValue:last').val());
+    const sugarCalories = Number(form.find('.sugarCalories').val()) * sugarQty;
+
+    const baseCalories = Number(form.find('.baseCalories').val());
+    const totalCalories = baseCalories + pigeonMilkCalories + sugarCalories;
+
+    form.find('.caloriesTotal').text(totalCalories);
 }

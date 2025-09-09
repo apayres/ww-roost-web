@@ -77,6 +77,10 @@
   display: block;
   padding-bottom: 2px;
 }
+.menu-item .optionMetaData {
+  color: #768089;
+  font-size: 14px;
+}
 
 .orderItemImage {
   height: 100px;

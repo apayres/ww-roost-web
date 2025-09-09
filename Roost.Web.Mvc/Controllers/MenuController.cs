@@ -1,7 +1,4 @@
-using System.ComponentModel.Design;
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Roost.Web.Mvc.Models;
 using Roost.Web.Mvc.Services;
 
 namespace Roost.Web.Mvc.Controllers;

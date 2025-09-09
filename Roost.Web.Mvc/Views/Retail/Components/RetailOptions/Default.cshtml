@@ -1,4 +1,4 @@
-﻿@model Roost.Web.Mvc.Models.AddItemToOrderModel
+﻿@model Roost.Web.Mvc.Models.RetailItemOptionsModel
 
 @{
     var modalId = "modalFor" + Model.Upc;
@@ -25,6 +25,13 @@
                                 @Html.HiddenFor(m => m.Options[i].Name)
                             </div>
                         }
+
+                        <table class="w-100 mt-2 optionMetaData">
+                            <tr>
+                                <td class="text-start">Total</td>
+                                <td class="text-end">@Model.Price.ToString("C")</td>
+                            </tr>
+                        </table>
 
                         @Html.HiddenFor(m => m.Upc, new { @class = "upc" })
                         @Html.HiddenFor(m => m.Quantity, new { @class = "quantity" })
