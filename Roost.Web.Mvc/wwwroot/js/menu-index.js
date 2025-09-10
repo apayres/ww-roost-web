@@ -29,7 +29,7 @@ function addToOrder_Click(e) {
         });
 
         // Update bag quantity
-        $('#bagQuantity').text(response.orderItems.length);
+        $('.bagFillQuantity').text(response.orderItems.length);
 
         // Show success message
         const toast = $('#toastMessage');
@@ -39,6 +39,14 @@ function addToOrder_Click(e) {
 
 
     }).fail(function (err, errorText) {
+
+        // Close the modal
+        bootstrap.Modal.getInstance(modal[0]).hide();
+
+        // Reset the options
+        options.each(function (i, opt) {
+            $(opt).find('option:first').prop('selected', true);
+        });
 
         // Show failure message
         const toast = $('#toastMessage');

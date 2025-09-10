@@ -19,26 +19,41 @@ namespace Roost.Web.Mvc.Controllers
 
         public async Task<IActionResult> Index(bool? addedSuccessfully)
         {
-            var model = await _menuService.LoadRetailMenuAsync();
-
-            if (addedSuccessfully.HasValue && addedSuccessfully.Value)
+            try
             {
-                TempData["Message"] = new MessageModel()
-                {
-                    MessageText = "Item added to bag successfully!",
-                    MessageType = "success"
-                };
-            }
+                var model = await _menuService.LoadRetailMenuAsync();
 
-            return View(model);
+                if (addedSuccessfully.HasValue && addedSuccessfully.Value)
+                {
+                    TempData["Message"] = new MessageModel()
+                    {
+                        MessageText = "Item added to bag successfully!",
+                        MessageType = "success"
+                    };
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Problem loading retail menu: {ex.Message}");
+                throw;
+            }
         }
 
         public async Task<IActionResult> AddItemToOrder(AddItemToOrderModel model)
         {
-            await _orderService.AddToOrderAsync(model.Upc, model.Quantity, model.Options);
+            try
+            {
+                await _orderService.AddToOrderAsync(model.Upc, model.Quantity, model.Options);
 
-
-            return RedirectToAction("Index", new {addedSuccessfully = true});
+                return RedirectToAction("Index", new { addedSuccessfully = true });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Problem adding retail item to order: {ex.Message}");
+                throw;
+            }
         }
     }
 }

@@ -39,7 +39,13 @@ namespace Roost.Web.Mvc.Services
             var response = await _httpClient.GetAsync("order");
             response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadFromJsonAsync<OrderModel>();
+            var model = await response.Content.ReadFromJsonAsync<OrderModel>();
+            if(model == null)
+            {
+                model = new OrderModel();
+            }
+
+            return model;
         }
 
         public async Task SubmitOrderAsync(OrderModel order)

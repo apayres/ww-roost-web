@@ -17,15 +17,17 @@ namespace Roost.Web.Mvc.Services
             response.EnsureSuccessStatusCode();
 
             var items = await response.Content.ReadFromJsonAsync<List<ItemModel>>();
+            if(items == null)
+            {
+                items = new List<ItemModel>();
+            }
+
             return items;
         }
 
-        public async Task<ItemModel> GetItemAsync(string upc)
+        public async Task<ItemModel?> GetItemAsync(string upc)
         {
-            var response = await _httpClient.GetAsync("items");
-            response.EnsureSuccessStatusCode();
-
-            var items = await response.Content.ReadFromJsonAsync<List<ItemModel>>();
+            var items = await GetItemsAsync();
             return items.FirstOrDefault(x => x.Upc == upc);
         }
     }

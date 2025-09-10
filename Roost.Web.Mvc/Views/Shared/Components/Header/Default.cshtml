@@ -2,15 +2,10 @@
 
     <div class="header-logo"></div>
 
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
+    <nav class="navbar navbar-expand navbar-light mb-3 d-none d-md-flex">
         <div class="container-fluid">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <div class="navbar-collapse justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Index">Menu</a>
@@ -23,8 +18,40 @@
                     </li>
                 </ul>
 
-                <vc:bag-summary-icon></vc:bag-summary-icon>
+                <div id="bagSummary" class="text-light">
+                    <vc:bag-summary-icon></vc:bag-summary-icon>
+                </div>
             </div>
         </div>
     </nav>
+
+    <div id="mobile-menu-icon" class="mobile-menu-closed d-block d-md-none">
+        <i class="bi bi-list menu-closed"></i>
+        <i class="bi bi-x menu-opened"></i>
+    </div>
+
+    <div id="mobile-menu">
+        <div class="navbar-collapse justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Index">
+                        <i class="bi bi-cup-hot-fill me-2"></i>
+                        Menu
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Retail" asp-action="Index">
+                        <i class="bi bi-shop-window me-2"></i>
+                        Retail
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <vc:bag-summary-icon></vc:bag-summary-icon>
+                </li>
+                <li class="nav-item border-top">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

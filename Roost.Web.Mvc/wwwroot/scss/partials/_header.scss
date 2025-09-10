@@ -44,3 +44,48 @@
         }
     }
 }
+
+#mobile-menu {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    width: 60%;
+    background: #EEEEEE;
+    box-shadow: 0 0 3px #ccc;
+    border-left: solid 1px #ccc;
+    z-index: 8888;
+    display: none;
+
+    .nav-item{
+        padding: 5px 15px;
+    }
+}
+
+#mobile-menu-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;    
+}
+
+.mobile-menu-opened {
+    .menu-closed {
+        display: none;
+    }
+
+    .menu-opened {
+        display: block;
+    }
+}
+
+.mobile-menu-closed {
+    .menu-closed {
+        display: block;
+    }
+
+    .menu-opened {
+        display: none;
+    }
+}
