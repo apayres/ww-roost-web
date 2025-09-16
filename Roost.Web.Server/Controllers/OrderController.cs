@@ -22,13 +22,29 @@ namespace Roost.Web.Server.Controllers
         [HttpGet]
         public ActionResult<Order> Get()
         {
-            return _orderService.GetOrder();
+            try
+            {
+                return _orderService.GetOrder();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Could not get order: {ex.Message}");
+                throw;
+            }
         }
 
         [HttpPost]
         public ActionResult<Order> Post(OrderItem orderItem)
         {
-           return _orderService.AddItemToOrder(orderItem.Item, orderItem.Quantity, orderItem.Options);
+            try
+            {
+                return _orderService.AddItemToOrder(orderItem.Item, orderItem.Quantity, orderItem.Options);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Could not add item to order: {ex.Message}");
+                throw;
+            }
         }
 
         [HttpPost]
@@ -43,7 +59,7 @@ namespace Roost.Web.Server.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message, ex);
+                _logger.LogError(ex, $"Could not submit order: {ex.Message}");
                 throw;
             }
         }
@@ -51,13 +67,29 @@ namespace Roost.Web.Server.Controllers
         [HttpPut]
         public ActionResult<Order> Put(Guid id, Item item, int quantity)
         {
-            return _orderService.UpdateOrderItem(id, item, quantity);
+            try
+            {
+                return _orderService.UpdateOrderItem(id, item, quantity);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Could not udpate order: {ex.Message}");
+                throw;
+            }
         }
 
         [HttpDelete]
         public ActionResult<Order> Delete(Guid id)
         {
-            return _orderService.UpdateOrderItem(id, null, 0);
+            try
+            {
+                return _orderService.UpdateOrderItem(id, null, 0);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Could not remove item from order: {ex.Message}");
+                throw;
+            }
         }
     }
 }

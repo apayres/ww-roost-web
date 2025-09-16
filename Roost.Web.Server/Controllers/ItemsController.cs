@@ -20,7 +20,15 @@ namespace Roost.Web.Server.Controllers
         [HttpGet]
         public async Task<IEnumerable<Item>> Get()
         {
-            return await _itemService.GetItems();
+            try
+            {
+                return await _itemService.GetItems();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Could not load items: {ex.Message}");
+                throw;
+            }
         }
     }
 }
