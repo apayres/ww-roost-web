@@ -22,6 +22,7 @@ namespace Roost.Web.Server.Controllers
         {
             try
             {
+                _logger.LogInformation("Getting items");
                 return await _itemService.GetItems();
             }
             catch (Exception ex)

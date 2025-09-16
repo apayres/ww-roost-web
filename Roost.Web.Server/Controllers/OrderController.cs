@@ -24,6 +24,7 @@ namespace Roost.Web.Server.Controllers
         {
             try
             {
+                _logger.LogInformation("Getting order");
                 return _orderService.GetOrder();
             }
             catch (Exception ex)
@@ -38,6 +39,7 @@ namespace Roost.Web.Server.Controllers
         {
             try
             {
+                _logger.LogInformation("Adding item to order");
                 return _orderService.AddItemToOrder(orderItem.Item, orderItem.Quantity, orderItem.Options);
             }
             catch (Exception ex)
@@ -53,6 +55,7 @@ namespace Roost.Web.Server.Controllers
         {
             try
             {
+                _logger.LogInformation("Sending order");
                 _messageSender.SendOrder(order);
                 _orderService.ResetOrder();
                 return Ok();
@@ -69,6 +72,7 @@ namespace Roost.Web.Server.Controllers
         {
             try
             {
+                _logger.LogInformation("Updating order item");
                 return _orderService.UpdateOrderItem(id, item, quantity);
             }
             catch (Exception ex)
@@ -83,6 +87,7 @@ namespace Roost.Web.Server.Controllers
         {
             try
             {
+                _logger.LogInformation("Deleting order item");
                 return _orderService.UpdateOrderItem(id, null, 0);
             }
             catch (Exception ex)
