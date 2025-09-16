@@ -22,8 +22,8 @@ namespace Roost.Web.Server.Messaging
 
             // Compose our message
             var message = new ServiceBusMessage();
-            message.ApplicationProperties.Add("Author", "Adam");
-            message.ApplicationProperties.Add("Reason", "COP");
+            message.ApplicationProperties.Add("Author", "Roost Web Application");
+            message.ApplicationProperties.Add("Reason", "Customer Order");
 
             message.To = "Order System";
             message.Subject = "New Order";
@@ -34,7 +34,7 @@ namespace Roost.Web.Server.Messaging
             var sender = client.CreateSender("orders");
 
             // Send message
-            sender.SendMessageAsync(message).Wait();
+            sender.SendMessageAsync(message).Wait();            
         }
     }
 }
