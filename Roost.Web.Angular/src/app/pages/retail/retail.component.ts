@@ -67,7 +67,7 @@ export class RetailComponent {
   showOptionsDialog(item: Item): boolean {
     let optionsDialog = this.dialog.open(OptionsComponent, {
       data: {
-        attributes: item.attributes
+        attributes: item.itemAttributes
       }
     });
 

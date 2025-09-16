@@ -34,12 +34,8 @@ export class OptionsComponent {
   size: string = '';
   price: number = 0;
 
-  constructor(public dialogRef: MatDialogRef<OptionsComponent>) {
-    this.data.attributes.forEach((attr: any) => {
-      if (attr.name === 'Price') {
-        this.price = Number(attr.value);
-      }
-    });
+  constructor(public dialogRef: MatDialogRef<OptionsComponent>) {    
+    this.price = Number(this.data.attributes.price);
   }
 
   saveSelection() {

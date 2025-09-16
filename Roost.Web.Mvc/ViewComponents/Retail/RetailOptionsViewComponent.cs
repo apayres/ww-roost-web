@@ -56,15 +56,7 @@ namespace Roost.Web.Mvc.ViewComponents.Retail
             };
 
             model.ShowOptions = item.Category.Trim() == "Apparel";
-
-            foreach (var attribute in item.Attributes)
-            {
-                if (attribute.Name == "Price")
-                {
-                    model.Price = decimal.Parse(attribute.Value.ToString());
-                    continue;
-                }
-            }
+            model.Price = item.ItemAttributes?.Price;
 
             return View(model);
         }

@@ -12,12 +12,12 @@ namespace Roost.Web.Mvc.Models
 
         public List<SelectListItem> Quantities { get; set; }
 
-        public double BaseCalories { get; set; }
+        public double? BaseCalories { get; set; }
 
         public int PigeonMilkCalories { get; set; }
 
         public int SugarCalories { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
     }
 }

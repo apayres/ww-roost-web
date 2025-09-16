@@ -56,21 +56,8 @@ namespace Roost.Web.Mvc.ViewComponents.Menu
                 }
             };
 
-            foreach(var attribute in item.Attributes)
-            {
-                if(attribute.Name == "Calories")
-                {
-                    model.BaseCalories = double.Parse(attribute.Value.ToString());
-                    continue;
-                }
-
-                if(attribute.Name == "Price")
-                {
-                    model.Price = decimal.Parse(attribute.Value.ToString());
-                    continue;
-                }
-            }
-
+            model.BaseCalories = item.ItemAttributes?.Calories;
+            model.Price = item.ItemAttributes?.Price;
             model.PigeonMilkCalories = 10;
             model.SugarCalories = 5;
 

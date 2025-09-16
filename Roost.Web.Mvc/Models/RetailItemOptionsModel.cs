@@ -14,6 +14,6 @@ namespace Roost.Web.Mvc.Models
 
         public bool ShowOptions { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
     }
 }

@@ -37,15 +37,9 @@ export class OptionsComponent {
   price: number = 0;
   baseCalories: number = 0;
 
-  constructor(public dialogRef: MatDialogRef<OptionsComponent>) {
-    this.data.attributes.forEach((attr: any) => {
-      if (attr.name === 'Calories') {
-        this.baseCalories = Number(attr.value);
-      }
-      else if (attr.name === 'Price') {
-        this.price = Number(attr.value);
-      }
-    });
+  constructor(public dialogRef: MatDialogRef<OptionsComponent>) {    
+    this.baseCalories = Number(this.data.attributes.calories);
+    this.price = Number(this.data.attributes.price);
 
     this.calculateCalories();
   }

@@ -2,7 +2,7 @@
 
 <div class="card orderItem mb-2">
     <div class="card-body">
-        <div class="orderItemImage" style="background: url('@Model.Item.Images[0].AbsoluteUri');"></div>
+        <div class="orderItemImage" style="background: url('@Model.Item.ImageUrl');"></div>
         <h5 class="card-title">@Model?.Item?.ItemName</h5>
         <div class="card-text">
             @if (Model.Options != null)

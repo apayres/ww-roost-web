@@ -30,7 +30,7 @@
                         </tr>
                         <tr>
                             <td class="text-start">Total</td>
-                            <td class="text-end">@Model.Price.ToString("C")</td>
+                            <td class="text-end">@Model.Price.GetValueOrDefault().ToString("C")</td>
                         </tr>
                     </table>
 

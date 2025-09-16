@@ -38,7 +38,7 @@
             <mat-icon fontIcon="delete"></mat-icon>
             <span class="hidden md:inline">Remove</span>
           </button>
-          <div class="menu-item-image" style="background: url('{{orderItem.item.images[0].absoluteUri}}');"></div>
+          <div class="menu-item-image" style="background: url('{{orderItem.item.imageUrl}}');"></div>
           <div class="menu-item-name">{{ orderItem.item.itemName }}</div>
           <div class="menu-item-options">
             <span *ngFor="let opt of orderItem.options" class="menu-item-option text-xs me-2 text-slate-500">{{ opt.name }}: {{ opt.value }}</span>

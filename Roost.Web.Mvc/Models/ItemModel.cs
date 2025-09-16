@@ -10,7 +10,7 @@
 
         public double UnitQuantity { set; get; }
 
-        public List<ItemAttributeModel>? Attributes { get; set; }
+        public ItemAttributesModel ItemAttributes { get; set; }
 
         public string Category { get; set; }
 
@@ -22,6 +22,6 @@
 
         public UnitOfMeasureModel? UnitOfMeasure { get; set; }
 
-        public List<ItemImageModel>? Images { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

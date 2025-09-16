@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Roost.Web.Server.Models
+﻿namespace Roost.Web.Server.Models
 {
     public class Item
     {
@@ -12,7 +10,7 @@ namespace Roost.Web.Server.Models
 
         public double UnitQuantity { set; get; }
 
-        public List<ItemAttribute>? Attributes { get; set; }
+        public ItemAttributes ItemAttributes { get; set; }
 
         public string Category { get; set; }
 
@@ -24,6 +22,6 @@ namespace Roost.Web.Server.Models
 
         public UnitOfMeasure? UnitOfMeasure { get; set; }
 
-        public List<ItemImage>? Images { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

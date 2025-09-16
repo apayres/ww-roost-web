@@ -58,7 +58,7 @@ export class MenuComponent implements OnInit {
 
     let optionsDialog = this.dialog.open(OptionsComponent, {
       data: {
-        attributes: item.attributes
+        attributes: item.itemAttributes
       }
     });
 

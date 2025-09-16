@@ -1,5 +1,4 @@
-import { Attribute } from "./attribute";
-import { Image } from "./image";
+import { Attributes } from "./attributes";
 import { UnitOfMeasure } from "./unitOfMeasure";
 
 export interface Item {
@@ -11,8 +10,7 @@ export interface Item {
   parentCategoryDescription: string;
   unitQuantity: number;
   upc: string;
-
-  attributes: Attribute[];
+  itemAttributes: Attributes;
   unitOfMeasure: UnitOfMeasure;
-  images: Image[];
+  imageUrl: string;
 }

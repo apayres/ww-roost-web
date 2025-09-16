@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Roost.Web.Server.Models;
 
 namespace Roost.Web.Server.Services
@@ -8,7 +7,6 @@ namespace Roost.Web.Server.Services
     {
         private const decimal TAX_RATE = 0.0925m;
         private const string ORDER_SESSION_KEY = "ORDER_SESSSION_KEY";
-        private const string ITEM_PRICE_ATTRIBUTE_NAME = "Price";
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public OrderService(IHttpContextAccessor httpContextAccessor)
@@ -46,7 +44,7 @@ namespace Roost.Web.Server.Services
                 Item = item,
                 Quantity = quantity,
                 Options = options,
-                Price = GetItemPrice(item)
+                Price = item.ItemAttributes?.Price
             });
 
             _httpContextAccessor?.HttpContext?.Session.SetString(ORDER_SESSION_KEY, JsonConvert.SerializeObject(orderInSession));
@@ -95,17 +93,6 @@ namespace Roost.Web.Server.Services
             order.SubTotal = decimal.Round(order.orderItems.Sum(x => x.Quantity * x.Price).GetValueOrDefault(), 2);
             order.SalesTax = decimal.Round(order.SubTotal.GetValueOrDefault() * TAX_RATE, 2);
             order.Total = decimal.Round(order.SubTotal.GetValueOrDefault() + order.SalesTax.GetValueOrDefault(), 2);
-        }
-
-        private decimal GetItemPrice(Item item)
-        {
-            var attribute = item.Attributes?.FirstOrDefault(x => x.Name == ITEM_PRICE_ATTRIBUTE_NAME);
-            if (attribute == null)
-            {
-                return 0m;
-            }
-
-            return decimal.Parse(attribute.Value?.ToString());
         }
     }
 }
