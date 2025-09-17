@@ -1,7 +1,12 @@
-﻿namespace Roost.Web.Server.Models
+﻿using Newtonsoft.Json;
+
+namespace Roost.Web.Server.Models
 {
     public class Item
     {
+        [JsonProperty(PropertyName = "id")]
+        public Guid Id { get; set; }
+
         public string Upc { set; get; }
 
         public string ItemName { get; set; }

@@ -2,6 +2,7 @@ import { Attributes } from "./attributes";
 import { UnitOfMeasure } from "./unitOfMeasure";
 
 export interface Item {
+  id: string;
   itemName: string;
   itemDescription: string;
   category: string;

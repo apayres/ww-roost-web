@@ -2,6 +2,8 @@
 {
     public class ItemModel
     {
+        public Guid Id { get; set; }
+
         public string Upc { set; get; }
 
         public string ItemName { get; set; }

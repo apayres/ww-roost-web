@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Roost.Web.Server.Models;
+using Roost.Web.Server.Repositories;
 
 namespace Roost.Web.Server.Services
 {
@@ -8,10 +9,12 @@ namespace Roost.Web.Server.Services
         private const decimal TAX_RATE = 0.0925m;
         private const string ORDER_SESSION_KEY = "ORDER_SESSSION_KEY";
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IRecipeRepository _recipeRepository;
 
-        public OrderService(IHttpContextAccessor httpContextAccessor)
+        public OrderService(IHttpContextAccessor httpContextAccessor, IRecipeRepository recipeRepository)
         {
             _httpContextAccessor = httpContextAccessor;
+            _recipeRepository = recipeRepository;
         }
 
         public Order GetOrder()
@@ -29,7 +32,7 @@ namespace Roost.Web.Server.Services
             return orderInSession;
         }
 
-        public Order AddItemToOrder(Item item, int quantity, List<Option> options)
+        public async Task<Order> AddItemToOrder(Item item, int quantity, List<Option> options)
         {
             var orderInSession = GetOrder();
             if (orderInSession == null)
@@ -38,13 +41,16 @@ namespace Roost.Web.Server.Services
                 orderInSession.orderItems = new List<OrderItem>();
             }
 
+            var recipe = await _recipeRepository.GetRecipe(item.Id);
+
             orderInSession.orderItems.Add(new OrderItem()
             {
                 OrderItemId = Guid.NewGuid(),
                 Item = item,
                 Quantity = quantity,
                 Options = options,
-                Price = item.ItemAttributes?.Price
+                Price = item.ItemAttributes?.Price,
+                Recipe = recipe?.Ingredients ?? new List<Ingredient>()
             });
 
             _httpContextAccessor?.HttpContext?.Session.SetString(ORDER_SESSION_KEY, JsonConvert.SerializeObject(orderInSession));

@@ -36,6 +36,7 @@ builder.Services.Configure<ServiceBusOptions>(x =>
 
 // APP SERVICES
 builder.Services.AddSingleton<IItemRepository, ItemRepository>();
+builder.Services.AddSingleton<IRecipeRepository, RecipeRepository>();
 builder.Services.AddSingleton<IOrderService, OrderService>();
 builder.Services.AddSingleton<IItemService, ItemService>();
 builder.Services.AddSingleton<IServiceBusMessageSender, ServiceBusMessageSender>();

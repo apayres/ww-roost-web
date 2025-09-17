@@ -35,12 +35,12 @@ namespace Roost.Web.Server.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Order> Post(OrderItem orderItem)
+        public async Task<ActionResult<Order>> Post(OrderItem orderItem)
         {
             try
             {
                 _logger.LogInformation("Adding item to order");
-                return _orderService.AddItemToOrder(orderItem.Item, orderItem.Quantity, orderItem.Options);
+                return await _orderService.AddItemToOrder(orderItem.Item, orderItem.Quantity, orderItem.Options);
             }
             catch (Exception ex)
             {
